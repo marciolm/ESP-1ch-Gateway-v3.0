@@ -129,7 +129,7 @@ String WifiServer(char *cmd, char *arg) {
 	response +="<br>";
 		
 	response +="<h2>WiFi Config</h2>";
-	response +="<table style=\"max_width: 100%; min-width: 40%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
+	response +="<table style=\"width:300px; max_width: 100%; min-width: 60%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
 	response +="<tr>";
 	response +="<th style=\"background-color: green; color: white;\">Parameter</th>";
 	response +="<th style=\"background-color: green; color: white;\">Value</th>";
@@ -149,7 +149,7 @@ String WifiServer(char *cmd, char *arg) {
 	response +="</table>";
 	
 	response +="<h2>System Status</h2>";
-	response +="<table style=\"max_width: 100%; min-width: 40%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
+	response +="<table style=\"max_width: 100%; min-width: 60%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
 	response +="<tr>";
 	response +="<th style=\"background-color: green; color: white;\">Parameter</th>";
 	response +="<th style=\"background-color: green; color: white;\">Value</th>";
@@ -159,7 +159,7 @@ String WifiServer(char *cmd, char *arg) {
 	response +="</table>";
 		
 	response +="<h2>LoRa Status</h2>";
-	response +="<table style=\"max_width: 100%; min-width: 40%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
+	response +="<table style=\"max_width: 100%; min-width: 60%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
 	response +="<tr>";
 	response +="<th style=\"background-color: green; color: white;\">Parameter</th>";
 	response +="<th style=\"background-color: green; color: white;\">Value</th>";
@@ -167,19 +167,20 @@ String WifiServer(char *cmd, char *arg) {
 	response +="<tr><td style=\"border: 1px solid black;\">Frequency</td><td style=\"border: 1px solid black;\">"; response+=freq; response+="</tr>";
 	response +="<tr><td style=\"border: 1px solid black;\">Spreading Factor</td><td style=\"border: 1px solid black;\">"; response+=sf; response+="</tr>";
 	response +="<tr><td style=\"border: 1px solid black;\">Gateway ID</td><td style=\"border: 1px solid black;\">";	
-	response +=String(MAC_array[0],HEX);									// The MAC array is always returned in lowercase
-	response +=String(MAC_array[1],HEX); 
-	response +=String(MAC_array[2],HEX); 
+	
+	if (MAC_array[0]<10) response +='0'; response +=String(MAC_array[0],HEX);	// The MAC array is always returned in lowercase
+	if (MAC_array[1]<10) response +='0'; response +=String(MAC_array[1],HEX); 
+	if (MAC_array[2]<10) response +='0'; response +=String(MAC_array[2],HEX); 
 	response +="ffff"; 
-	response +=String(MAC_array[3],HEX); 
-	response +=String(MAC_array[4],HEX); 
-	response +=String(MAC_array[5],HEX);
+	if (MAC_array[3]<10) response +='0'; response +=String(MAC_array[3],HEX); 
+	if (MAC_array[4]<10) response +='0'; response +=String(MAC_array[4],HEX); 
+	if (MAC_array[5]<10) response +='0'; response +=String(MAC_array[5],HEX);
 	response+="</tr>";
 	response +="</table>";
 		
 	response +="<h2>Statistics</h2>";
 	delay(1);
-	response +="<table style=\"max_width: 100%; min-width: 40%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
+	response +="<table style=\"max_width: 100%; min-width: 60%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
 	response +="<tr>";
 	response +="<th style=\"background-color: green; color: white;\">Counter</th>";
 	response +="<th style=\"background-color: green; color: white;\">Value</th>";
@@ -193,7 +194,7 @@ String WifiServer(char *cmd, char *arg) {
 
 	response +="<br>";
 	response +="<h2>Settings</h2>";
-	response +="<table style=\"max_width: 100%; min-width: 40%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
+	response +="<table style=\"max_width: 100%; min-width: 60%; border: 1px solid black; border-collapse: collapse;\" class=\"config_table\">";
 	response +="<tr>";
 	response +="<th style=\"background-color: green; color: white;\">Counter</th>";
 	response +="<th style=\"background-color: green; color: white;\">Value</th>";

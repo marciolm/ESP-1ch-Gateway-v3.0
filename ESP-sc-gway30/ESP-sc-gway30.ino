@@ -1,7 +1,7 @@
 //
 // Copyright (c) 2016 Maarten Westenberg version for ESP8266
 // Verison 3.2.0
-// Date: 2016-10-08
+// Date: 2016-10-29
 //
 // 	based on work done by Thomas Telkamp for Raspberry PI 1-ch gateway
 //	and many others.
@@ -27,7 +27,7 @@
 // ----------------------------------------------------------------------------------------
 
 //
-#define VERSION " ! V. 3.1.0, 161007"
+#define VERSION " ! V. 3.2.0, 161029"
 
 #include "ESP-sc-gway.h"						// This file contains configuration of GWay
 
@@ -176,10 +176,21 @@ void gway_failed(const char *file, uint16_t line) {
 // ----------------------------------------------------------------------------
 void printDigits(int digits)
 {
-    // utility function for digital clock display: prints preceding colon and leading 0
+    // utility function for digital clock display: prints leading 0
     if(digits < 10)
         Serial.print(F("0"));
     Serial.print(digits);
+}
+
+// ----------------------------------------------------------------------------
+// Print utin8_t values in HEX with leading 0 when necessary
+// ----------------------------------------------------------------------------
+void printHexDigit(uint8_t digit)
+{
+    // utility function for printing Hex Values with leading 0
+    if(digit < 10)
+        Serial.print('0');
+    Serial.print(digit,HEX);
 }
 
 
@@ -675,7 +686,7 @@ void pullData() {
     pullDataReq[2]  = token_l;
     pullDataReq[3]  = PKT_PULL_DATA;						// 0x02
 	
-	// READ MAC ADDRESS OF ESP8266
+	// READ MAC ADDRESS OF ESP8266, and return unique Gateway ID consisting of MAC address and 2bytes 0xFF
     pullDataReq[4]  = MAC_array[0];
     pullDataReq[5]  = MAC_array[1];
     pullDataReq[6]  = MAC_array[2];
@@ -723,7 +734,7 @@ void sendstat() {
     status_report[0]  = PROTOCOL_VERSION;					// 0x01
     status_report[3]  = PKT_PUSH_DATA;						// 0x00
 	
-	// READ MAC ADDRESS OF ESP8266
+	// READ MAC ADDRESS OF ESP8266, and return unique Gateway ID consisting of MAC address and 2bytes 0xFF
     status_report[4]  = MAC_array[0];
     status_report[5]  = MAC_array[1];
     status_report[6]  = MAC_array[2];
@@ -856,14 +867,14 @@ void setup () {
     // display results of getting hardware address
 	// 
     Serial.print("Gateway ID: ");
-    Serial.print(MAC_array[0],HEX);
-    Serial.print(MAC_array[1],HEX);
-    Serial.print(MAC_array[2],HEX);
-	Serial.print(0xFF, HEX);
-	Serial.print(0xFF, HEX);
-    Serial.print(MAC_array[3],HEX);
-    Serial.print(MAC_array[4],HEX);
-    Serial.print(MAC_array[5],HEX);
+	printHexDigit(MAC_array[0]);
+    printHexDigit(MAC_array[1]);
+    printHexDigit(MAC_array[2]);
+	printHexDigit(0xFF);
+	printHexDigit(0xFF);
+    printHexDigit(MAC_array[3]);
+    printHexDigit(MAC_array[4]);
+    printHexDigit(MAC_array[5]);
 
     Serial.print(", Listening at SF");
 	Serial.print(sf);

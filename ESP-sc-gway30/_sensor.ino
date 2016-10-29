@@ -141,8 +141,8 @@ int sensorPacket(uint8_t * buff_up) {
 	message[4] = DevAddr[0];							// First byte[0] of Dev_Addr
 	
 	message[5] = 0x00;									// FCtrl is normally 0
-	message[6] = frameCount % 0xFF;						// LSB
-	message[7] = frameCount / 0xFF;						// MSB
+	message[6] = frameCount % 0x100;					// LSB
+	message[7] = frameCount / 0x100;					// MSB
 	
 	// FPort, either 0 or 1 bytes. Must be != 0 for non MAC messages such as user payload
 	message[8] = 0x01;									// Portmust not be 0

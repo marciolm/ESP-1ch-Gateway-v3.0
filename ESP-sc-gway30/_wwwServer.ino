@@ -168,13 +168,13 @@ String WifiServer(char *cmd, char *arg) {
 	response +="<tr><td style=\"border: 1px solid black;\">Spreading Factor</td><td style=\"border: 1px solid black;\">"; response+=sf; response+="</tr>";
 	response +="<tr><td style=\"border: 1px solid black;\">Gateway ID</td><td style=\"border: 1px solid black;\">";	
 	
-	if (MAC_array[0]<10) response +='0'; response +=String(MAC_array[0],HEX);	// The MAC array is always returned in lowercase
-	if (MAC_array[1]<10) response +='0'; response +=String(MAC_array[1],HEX); 
-	if (MAC_array[2]<10) response +='0'; response +=String(MAC_array[2],HEX); 
+	if (MAC_array[0]< 0x10) response +='0'; response +=String(MAC_array[0],HEX);	// The MAC array is always returned in lowercase
+	if (MAC_array[1]< 0x10) response +='0'; response +=String(MAC_array[1],HEX); 
+	if (MAC_array[2]< 0x10) response +='0'; response +=String(MAC_array[2],HEX); 
 	response +="ffff"; 
-	if (MAC_array[3]<10) response +='0'; response +=String(MAC_array[3],HEX); 
-	if (MAC_array[4]<10) response +='0'; response +=String(MAC_array[4],HEX); 
-	if (MAC_array[5]<10) response +='0'; response +=String(MAC_array[5],HEX);
+	if (MAC_array[3]< 0x10) response +='0'; response +=String(MAC_array[3],HEX); 
+	if (MAC_array[4]< 0x10) response +='0'; response +=String(MAC_array[4],HEX); 
+	if (MAC_array[5]< 0x10) response +='0'; response +=String(MAC_array[5],HEX);
 	response+="</tr>";
 	response +="</table>";
 		

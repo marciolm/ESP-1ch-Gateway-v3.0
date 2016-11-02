@@ -188,7 +188,7 @@ void printDigits(int digits)
 void printHexDigit(uint8_t digit)
 {
     // utility function for printing Hex Values with leading 0
-    if(digit < 10)
+    if(digit < 0x10)
         Serial.print('0');
     Serial.print(digit,HEX);
 }

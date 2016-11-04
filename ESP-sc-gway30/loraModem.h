@@ -24,9 +24,12 @@ long txDelay= 0000;								// extra delay time on top of server TMST
 
 
 // Frequencies
+// USA
+uint32_t  freq =   902300000;   // Channel 0, 902.3MHz //djl
+
 // Set center frequency. If in doubt, choose the first one, comment all others
 // Each "real" gateway should support the first 3 frequencies according to LoRa spec.
-uint32_t  freq = 868100000; 					// Channel 0, 868.1 MHz
+//uint32_t  freq = 868100000; 					// Channel 0, 868.1 MHz
 //uint32_t  freq = 868300000; 					// Channel 1, 868.3 MHz
 //uint32_t  freq = 868500000; 					// Channel 1, 868.5 MHz
 //uint32_t  freq = 867100000; 					// Channel 2, 867.1 MHz

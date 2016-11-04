@@ -45,11 +45,11 @@
 #include <sys/time.h>
 #include <cstring>
 #include <SPI.h>
-#include <TimeLib.h>							// http://playground.arduino.cc/code/time
+#include "TimeLib.h" //djl <TimeLib.h>							// http://playground.arduino.cc/code/time
 #include <ESP8266WiFi.h>
 #include <DNSServer.h> 							// Local DNSserver
 #include <ESP8266WebServer.h>
-#include <WiFiManager.h>						// Library for ESP WiFi config through an AP
+#include "WiFiManager.h" //djl <WiFiManager.h>						// Library for ESP WiFi config through an AP
 #include <WiFiUdp.h>
 
 #if GATEWAYNODE==1
@@ -63,8 +63,8 @@ extern "C" {
 }
 #include <pins_arduino.h>
 #include <ArduinoJson.h>
-#include <SimpleTimer.h>
-#include <gBase64.h>							// https://github.com/adamvr/arduino-base64 (I changed the name)
+#include "SimpleTimer.h" //djl <SimpleTimer.h>
+#include "gBase64.h" //djl <gBase64.h>							// https://github.com/adamvr/arduino-base64 (I changed the name)
 
 #include "loraModem.h"
 
@@ -95,10 +95,10 @@ char MAC_char[19];
  *******************************************************************************/
 
 // SX1276 - ESP8266 connections
-int ssPin = 16;									// GPIO16, D0
+int ssPin = 2; //djl 16;									// GPIO16, D0
 int dio0  = 15;									// GPIO15, D8
 int dio1  = 4;									// GPIO4,  D2
-int dio2  = 0;									// GPIO3, !! NOT CONNECTED IN THIS VERSION
+int dio2  = 3; //djl 0;									// GPIO3, !! NOT CONNECTED IN THIS VERSION
 int RST   = 0;									// 0, not connected
 
 // Set spreading factor (SF7 - SF12)
@@ -129,7 +129,7 @@ SimpleTimer timer; 								// Timer is needed for delayed sending
 
 // You can switch webserver off if not necessary but probably better to leave it in.
 #if A_SERVER==1
-#include <Streaming.h>          				// http://arduiniana.org/libraries/streaming/
+#include "Streaming.h" //djl <Streaming.h>          				// http://arduiniana.org/libraries/streaming/
   String webPage;
   ESP8266WebServer server(SERVERPORT);
 #endif

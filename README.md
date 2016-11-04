@@ -1,4 +1,4 @@
-#Single Channel LoRaWAN Gateway
+#Single Channel LoRaWAN Gateway - Updated for US 902.3MHz use
 
 Version 3.1, October 07, 2016
 Author: M. Westenberg (mw12554@hotmail.com)

@@ -33,6 +33,8 @@
 
 #if WIFIMANAGER>0
 #include "FS.h"
+#else
+#include "FS.h"
 #endif
 
 #include <Esp.h>
@@ -108,7 +110,7 @@ sf_t sf 			= _SPREADING ;
 // Defined in ESP-sc_gway.h
 //
 float lat			= _LAT;						// Configuration specific info...
-float lon			= _LON;
+float lon      = _LON;
 int   alt			= _ALT;
 char platform[24]	= _PLATFORM; 				// platform definition
 char email[40]		= _EMAIL;    				// used for contact email
@@ -725,8 +727,8 @@ void sendstat() {
     uint8_t status_report[STATUS_SIZE]; 					// status report as a JSON object
     char stat_timestamp[32];								// XXX was 24
     time_t t;
-	char clat[8]={0};
-	char clon[8]={0};
+	char clat[10]={0};
+	char clon[10]={0};
 
     int stat_index=0;
 	

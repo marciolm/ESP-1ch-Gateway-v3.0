@@ -35,7 +35,7 @@
 // gateway
 // NOTE: If your node has only one frequency enabled and one SF, you must set this to 1
 //		in order to receive downlink messages
-#define _STRICT_1CH	0							// 1 is strict, 0 is as sent by backend
+#define _STRICT_1CH	1							// 1 is strict, 0 is as sent by backend
 
 // Gather statistics on sensor and Wifi status
 #define STATISTICS 1
@@ -45,7 +45,7 @@
 #define DEBUG 1					
 
 // Allows configuration through WifiManager AP setup. Must be 0 or 1					
-#define WIFIMANAGER 1
+#define WIFIMANAGER 0
 
 // Define the name of the accesspoint if the gateway is in accesspoint mode (is
 // getting WiFi SSID and password using WiFiManager)

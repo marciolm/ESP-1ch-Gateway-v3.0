@@ -727,8 +727,8 @@ void sendstat() {
     uint8_t status_report[STATUS_SIZE]; 					// status report as a JSON object
     char stat_timestamp[32];								// XXX was 24
     time_t t;
-	char clat[10]={0};
-	char clon[10]={0};
+	char clat[12]={0};
+	char clon[12]={0};
 
     int stat_index=0;
 	
@@ -757,8 +757,8 @@ void sendstat() {
 	sprintf(stat_timestamp, "%d-%d-%2d %d:%d:%02d CET", year(),month(),day(),hour(),minute(),second());
 	yield();
 	
-	ftoa(lat,clat,4);										// Convert lat to char array with 4 decimals
-	ftoa(lon,clon,4);										// As Arduino CANNOT prints floats
+	ftoa(lat,clat,5);										// Convert lat to char array with 4 decimals
+	ftoa(lon,clon,5);										// As Arduino CANNOT prints floats
 	
 	// Build the Status message in JSON format, XXX Split this one up...
 	delay(1);
@@ -851,7 +851,7 @@ void setup () {
 	 
 	WiFi.macAddress(MAC_array);
     for (int i = 0; i < sizeof(MAC_array); ++i){
-      sprintf(MAC_char,"%s%02x:",MAC_char,MAC_array[i]);
+      sprintf(MAC_char,"%s%02X:",MAC_char,MAC_array[i]);
     }
 	Serial.print("MAC: ");
     Serial.println(MAC_char);

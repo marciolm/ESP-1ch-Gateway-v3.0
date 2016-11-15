@@ -70,7 +70,7 @@ extern "C" {
 
 #include "loraModem.h"
 
-int debug=1;									// Debug level! 0 is no msgs, 1 normal, 2 is extensive
+int debug=DEBUG;									// Debug level! 0 is no msgs, 1 normal, 2 is extensive
 
 using namespace std;
 

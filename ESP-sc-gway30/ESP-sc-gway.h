@@ -41,6 +41,7 @@
 #define STATISTICS 1
 
 // Initial value of debug parameter. Can be hanged using the admin webserver
+// Debug level! 0 is no msgs, 1 normal, 2 is extensive
 // For operational use, set initial DEBUG vaulue 0
 #define DEBUG 1					
 
